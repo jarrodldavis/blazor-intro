@@ -1,34 +1,27 @@
 @page "/ParentComponent"
-@page "/ParentComponent/{yearParam}"
+@page "/ParentComponent/{year:int}"
 
 <h1>Parent-child example</h1>
 
 <ChildComponent Title="Panel Title from Parent"
                 OnClick="@ShowMessage"
-                bind-Year="@year">
+                bind-Year="@Year">
 
     Content of the child component is supplied by the parent component.
 </ChildComponent>
 
 <p><b>@messageText</b></p>
-<p><b>parent year: @year</b></p>
+<p><b>parent year: @Year</b></p>
 
 @functions {
-    private string messageText;
-    private int year = 1978;
-
     [Parameter]
-    private string yearParam
-    {
-        set
-        {
-            year = int.Parse(value);
-        }
-    }
+    private int Year { get; set; } = 1978;
+
+    private string messageText;
 
     private void ShowMessage(UIMouseEventArgs e) {
         messageText = "Blaze a new trail with Blazor!";
-        year = 1986;
+        Year = 1986;
         Console.WriteLine(Json.Serialize(e));
     }
 }
