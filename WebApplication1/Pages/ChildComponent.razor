@@ -1,0 +1,35 @@
+@implements IDisposable
+
+<div class="card">
+    <div class="card-header">@Title</div>
+    <div class="card-body">@ChildContent</div>
+
+    <button class="btn btn-primary" onclick="@OnClick">
+        Trigger a Parent component method
+    </button>
+</div>
+
+<div>
+    Child Year: @Year
+</div>
+
+@functions {
+    [Parameter]
+    private string Title { get; set; }
+    
+    [Parameter]
+    private RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    private EventCallback<UIMouseEventArgs> OnClick { get; set; }
+
+    [Parameter]
+    private int Year { get; set; }
+
+    [Parameter]
+    private EventCallback<int> YearChanged { get; set; }
+
+    public void Dispose() {
+        Console.WriteLine("so long");
+    }
+}

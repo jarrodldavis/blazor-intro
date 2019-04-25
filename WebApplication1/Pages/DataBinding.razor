@@ -1,0 +1,28 @@
+@page "/DataBinding"
+
+<div>
+    <label>
+        <input type="checkbox"
+               class="form-check-input"
+               id="italicsCheck"
+               bind="@_italicsCheck" />
+        First Checkbox
+    </label>
+</div>
+
+<div>
+    <label>
+        <input type="checkbox"
+               class="form-check-input"
+               id="italicsCheck2"
+               checked="@_italicsCheck"
+               onchange="@((UIChangeEventArgs __e) => _italicsCheck = (bool)__e.Value)" />
+        Second Checkbox
+    </label>
+</div>
+
+<p>Checked: @_italicsCheck</p>
+
+@functions {
+    private bool _italicsCheck;
+}
