@@ -1,4 +1,5 @@
 @implements IDisposable
+@inject IJSRuntime Runtime
 
 <div class="card">
     <div class="card-header">@Title</div>
@@ -30,6 +31,6 @@
     private EventCallback<int> YearChanged { get; set; }
 
     public void Dispose() {
-        Console.WriteLine("so long");
+        Runtime.InvokeAsync<object>("alert", "goodbye");
     }
 }
